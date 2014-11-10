@@ -147,6 +147,9 @@ header {
   box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
   transition: all .5s;
 }
+header.light {
+  color: #111111;
+}
 header h1 {
   font-family: Gotham, helvetica, sans-serif;
   font-size: 2em;
@@ -196,4 +199,5 @@ header .filter-panel .filter.hex-color input {
   width: 12px;
   height: 12px;
   border-radius: 24px;
+  cursor: pointer;
 }

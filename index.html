@@ -44,7 +44,9 @@
                 <h2>{{name}}</h2>
                 <ul class="color-list">
                     {{#each colors}}
-                        <li style="background:{{this}}"></li>
+                        <li data-color="{{this}}"
+                            style="background:{{this}}"
+                            title="{{this}}"></li>
                     {{/each}}
                 </ul>
             </li>

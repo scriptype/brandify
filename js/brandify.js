@@ -19,10 +19,19 @@
 
         // Render all brands for initialization.
         render(allBrands)
+    }
 
-        // Attach event handlers.
-        $(".filter input").on("change", slideHandler)
-        $("#color-box").on("keyup", inputBoxHandler)
+    // Reset event handlers.
+    function propagateEvents() {
+        // Sliders
+        $(".filter input").off("change")
+            .on("change", eventSlide)
+        // HEX input
+        $("#color-box").off("keyup")
+            .on("keyup", eventKeyup)
+        // Brand color-list
+        $(".color-list li").off("click")
+            .on("click", eventClick)
     }
 
     function render(brands) {
@@ -34,8 +43,17 @@
         // Render brands.
         $target.html(html)
 
+        // Re-attach events as DOM is resetted.
+        propagateEvents()
+
         // Change the color of bar.
         $header.css("background", color["HEX"])
+
+        // If color is white-ish, get header know this.
+        if (isLight(color["RGB"]))
+            $header.addClass("light")
+        else
+            $header.removeClass("light")
 
         // Reset slider values.
         $("#red").val(color["RGB"][0])
@@ -46,12 +64,12 @@
         $("#color-box").val(color["HEX"])
     }
 
-    function slideHandler (ev) {
+    function eventSlide (ev) {
         // Get sliders' values.
         var RGB = [
-            $("input#red").val(),
-            $("input#green").val(),
-            $("input#blue").val()
+            parseInt($("input#red").val()),
+            parseInt($("input#green").val()),
+            parseInt($("input#blue").val())
         ]
 
         // Change color.
@@ -61,16 +79,27 @@
         rerender()
     }
 
-    function inputBoxHandler (ev) {
+    function eventKeyup (ev) {
+        // Do nothing on non-effective keys.
         if (   ev.keyCode === 91 || ev.keyCode === 93
             || ev.keyCode === 16 || ev.keyCode === 17 || ev.keyCode === 18
             || ev.keyCode === 37 || ev.keyCode === 38
             || ev.keyCode === 39 || ev.keyCode === 40)
             return
-        // Do nothing on non-effective keys.
 
         // Get input's value.
         var colorValue = $("#color-box").val()
+
+        // Change color.
+        color.HEX = colorValue
+        color.RGB = toRGB(colorValue)
+
+        rerender()
+    }
+
+    function eventClick (ev) {
+        // Get input's value.
+        var colorValue = $(ev.currentTarget).data("color")
 
         // Change color.
         color.HEX = colorValue
@@ -125,7 +154,7 @@
         // Prepare results.
         var filteredBrands = [],
         // Difference limit.
-            limit = 128
+            limit = 64
 
         // Check each brand.
         var brand
@@ -160,6 +189,18 @@
                 // Get sum of 3 difference values. i.e. [10, 78, 10] –> 98
                 return a + e
             })
+    }
+
+    function isLight (RGB) {
+        // Is R+G+B > 640?
+        var whiteIsh = 640 < RGB.reduce(function (e, a) {
+                return e + a
+            }),
+            // Is R+G > 480
+            yellowIsh = RGB[0] + RGB[1] > 480
+
+        // It's a light color if it's white-ish or yellow-ish.
+        return whiteIsh || yellowIsh
     }
 
 })()
