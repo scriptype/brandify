@@ -126,6 +126,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.border-radius {
+  border-radius: 3px;
+}
 html,
 body {
   height: 100%;
@@ -141,9 +144,9 @@ body {
 }
 header {
   background: #111111;
-  text-align: center;
   color: #f8f8f8;
   border-bottom: 1px solid #cccccc;
+  text-align: center;
   box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.5);
   transition: all .5s;
 }
@@ -151,7 +154,8 @@ header.light {
   color: #111111;
 }
 header h1 {
-  font-family: Gotham, helvetica, sans-serif;
+  font-family: "Gotham Rounded", helvetica, sans-serif;
+  font-weight: 100;
   font-size: 2em;
   line-height: 1.5em;
   text-transform: uppercase;
@@ -169,40 +173,63 @@ header .filter-panel .filter.slider input {
 }
 header .filter-panel .filter.hex-color input {
   width: 50px;
-  border-radius: 3px;
   border: none;
   padding: 2px 5px;
-  box-shadow: inset 0 5px 10px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 5px 10px -2px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+.brands-container {
+  overflow: hidden;
+  padding-bottom: 30px;
 }
 .brands-container .brand {
   width: 300px;
   height: 150px;
   margin: 30px 30px 0 0;
   float: left;
+  position: relative;
   box-sizing: border-box;
   border: 1px solid #cccccc;
   text-align: center;
+  box-shadow: inset 0 -20px 80px -40px rgba(0, 0, 0, 0.5);
+  transition: all .3s;
   border-radius: 3px;
-  box-shadow: inset 0 -20px 80px -40px rgba(0, 0, 0, 0.4);
 }
 .brands-container .brand:nth-child(3n) {
   margin-right: 0;
+}
+.brands-container .brand:hover {
+  box-shadow: inset 0 -35px 120px -50px rgba(0, 0, 0, 0.5);
 }
 .brands-container .brand h2 {
   font-size: 1.5em;
   padding: 1em;
 }
-.brands-container .brand .color-list {
+.color-list {
   display: inline-block;
   overflow: hidden;
   padding: 0 24px;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
-.brands-container .brand .color-list li {
+.color-list li {
   display: inline-block;
+  cursor: pointer;
   width: 12px;
   height: 12px;
-  border-radius: 24px;
-  cursor: pointer;
+  border-radius: 12px;
+}
+.tag-list {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+.tag-list li {
+  display: inline-block;
+  font-size: .8em;
+}
+.tag-list li:not(:last-child):after {
+  content: ",";
 }

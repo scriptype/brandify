@@ -1,58 +1,72 @@
 [
     {
         "name": "skype",
-        "colors": ["#008adf", "#f9fdfe"]
+        "colors": ["#008adf", "#f9fdfe"],
+        "tags": ["software", "communication"]
     },
     {
         "name": "filezilla",
-        "colors": ["#ad0000", "#ffffff"]
+        "colors": ["#ad0000", "#ffffff"],
+        "tags": ["software"]
     },
     {
         "name": "spotify",
-        "colors": ["#7cc500", "#020302"]
+        "colors": ["#7cc500", "#020302"],
+        "tags": ["music", "web"]
     },
     {
         "name": "photoshop",
-        "colors": ["#005abe", "#00d8ff"]
+        "colors": ["#005abe", "#00d8ff"],
+        "tags": ["software", "graphic editing"]
     },
     {
         "name": "google",
-        "colors": ["#f60019", "#3482c9", "#ffd500", "#00c348"]
+        "colors": ["#f60019", "#3482c9", "#ffd500", "#00c348"],
+        "tags": ["web", "search"]
     },
     {
         "name": "bittorrent",
-        "colors": ["#6d45a0", "#fbfff3"]
+        "colors": ["#6d45a0", "#fbfff3"],
+        "tags": ["software", "download"]
     },
     {
         "name": "cmd.fm",
-        "colors": ["#000000", "#f9f9f9"]
+        "colors": ["#000000", "#f9f9f9"],
+        "tags": ["music", "web"]
     },
     {
         "name": "firefox",
-        "colors": ["#de2600", "#fabb00", "#b3f5fd", "#0874c2"]
+        "colors": ["#de2600", "#fabb00", "#b3f5fd", "#0874c2"],
+        "tags": ["software", "web"]
     },
     {
         "name": "webstorm",
-        "colors": ["#009dc4", "#ffbe71", "#ff5a00"]
+        "colors": ["#009dc4", "#ffbe71", "#ff5a00"],
+        "tags": ["software", "web"]
     },
     {
         "name": "pycharm",
-        "colors": ["#f96b01", "#ffcf83", "#b3f5fd", "#6b947f"]
+        "colors": ["#f96b01", "#ffcf83", "#b3f5fd", "#6b947f"],
+        "tags": ["software", "code"]
     },
     {
         "name": "sublime text",
-        "colors": ["#4c4c4c", "#ff7400"]
+        "colors": ["#4c4c4c", "#ff7400"],
+        "tags": ["software", "code"]
     },
     {
         "name": "adobe",
-        "colors": ["#f4f4f4", "#d20000"]
+        "colors": ["#f4f4f4", "#d20000"],
+        "tags": ["software"]
     },
     {
         "name": "soundcloud",
-        "colors": ["#ff6600", "#ffffff"]
+        "colors": ["#ff6600", "#ffffff"],
+        "tags": ["music", "web"]
     },
     {
         "name": "youtube",
-        "colors": ["#dc2725", "#ffffff", "#333333"]
+        "colors": ["#dc2725", "#ffffff", "#333333"],
+        "tags": ["music", "video", "web"]
     }
 ]
