@@ -1,11 +1,11 @@
 (function(){
 
     // Color that will be looked for.
-    var COLOR = {
+    var color = {
             RGB: [0, 0, 0],
             HEX: "#000000"
         },
-        ALL_BRANDS
+        allBrands
 
     // Get brands.
     var req = new XMLHttpRequest()
@@ -15,14 +15,14 @@
 
     function init() {
         // Keep all brands when loaded.
-        ALL_BRANDS = JSON.parse(req.response)
+        allBrands = JSON.parse(req.response)
 
         // Render all brands for initialization.
-        render(ALL_BRANDS)
+        render(allBrands)
 
         // Attach event handlers.
-        $(".filter input").on("change", rerender)
-        $("#color-box").on("keyup", rerender)
+        $(".filter input").on("change", slideHandler)
+        $("#color-box").on("keyup", inputBoxHandler)
     }
 
     function render(brands) {
@@ -35,60 +35,71 @@
         $target.html(html)
 
         // Change the color of bar.
-        $header.css("background", COLOR["HEX"])
+        $header.css("background", color["HEX"])
 
         // Reset slider values.
-        $("#red").val(COLOR["RGB"][0])
-        $("#green").val(COLOR["RGB"][1])
-        $("#blue").val(COLOR["RGB"][2])
+        $("#red").val(color["RGB"][0])
+        $("#green").val(color["RGB"][1])
+        $("#blue").val(color["RGB"][2])
 
         // Reset input's value.
-        $("#color-box").val(COLOR["HEX"])
+        $("#color-box").val(color["HEX"])
     }
 
-    function rerender(ev) {
-        // Do nothing on non-effective keys.
+    function slideHandler (ev) {
+        // Get sliders' values.
+        var RGB = [
+            $("input#red").val(),
+            $("input#green").val(),
+            $("input#blue").val()
+        ]
+
+        // Change color.
+        color.RGB = RGB
+        color.HEX = toHex(RGB)
+
+        rerender()
+    }
+
+    function inputBoxHandler (ev) {
         if (   ev.keyCode === 91 || ev.keyCode === 93
             || ev.keyCode === 16 || ev.keyCode === 17 || ev.keyCode === 18
             || ev.keyCode === 37 || ev.keyCode === 38
             || ev.keyCode === 39 || ev.keyCode === 40)
-        return
+            return
+        // Do nothing on non-effective keys.
 
-        // Get the value of sliders or input, depending on which one was changed.
-        var isSlider = $(ev.currentTarget).closest("label").hasClass("slider")
-        if (isSlider) {
-            // Get sliders' values.
-            var RGB = [
-                $("input#red").val(),
-                $("input#green").val(),
-                $("input#blue").val()
-            ]
-            COLOR.RGB = RGB
-            COLOR.HEX = toHex(RGB)
-        } else {
-            // Get input's value.
-            var colorValue = $("#color-box").val()
-            COLOR.HEX = colorValue
-            COLOR.RGB = toRGB(colorValue)
-        }
+        // Get input's value.
+        var colorValue = $("#color-box").val()
+
+        // Change color.
+        color.HEX = colorValue
+        color.RGB = toRGB(colorValue)
+
+        rerender()
+    }
+
+    function rerender() {
         // Filter by new color.
-        var filteredBrands = filterBrands(COLOR["HEX"])
+        var filteredBrands = filterBrands(color["HEX"])
         // Render brands.
         render(filteredBrands)
     }
 
-    // Turn RGB array into an hexadecimal string. i.e. [255, 0, 128] –> #ff0080
+    // Turn RGB array into an hexadecimal color value. i.e. [255, 0, 128] –> #ff0080
     function toHex(RGB) {
         return "#" + RGB.map(function (e) {
             return ("0" + parseInt(e).toString(16)).slice(-2)
         }).join("")
     }
 
-    // Turn hex into RGB array. i.e. #ff0080 –> [255, 0, 128]
+    // Turn HEX into RGB array. i.e. #ff0080 –> [255, 0, 128]
     function toRGB(HEX) {
+        var RGB
+
         // Remove hash from beginning.
         HEX = HEX.slice(1)
-        var RGB
+
         // If HEX is shortened like #f08, duplicate each character.
         if (HEX.length === 3) {
             RGB = [
@@ -118,17 +129,17 @@
 
         // Check each brand.
         var brand
-        for (brand in ALL_BRANDS) {
-            if (ALL_BRANDS.hasOwnProperty(brand)) {
+        for (brand in allBrands) {
+            if (allBrands.hasOwnProperty(brand)) {
                 // Save as a variable for easy-access.
-                var brandColors = ALL_BRANDS[brand]["colors"],
+                var brandColors = allBrands[brand]["colors"],
                     i = 0
                 // Check each color of brand.
                 for (i; i < brandColors.length; i++) {
                     // If color has acceptable or no difference from user input,
                     if (calcColorDiff(brandColors[i], HEX) <= limit) {
                         // Keep brand for render.
-                        filteredBrands.push(ALL_BRANDS[brand])
+                        filteredBrands.push(allBrands[brand])
                         // Stop iterating colors of same brand.
                         break
                     }
@@ -139,12 +150,12 @@
         return filteredBrands
     }
 
-    function calcColorDiff(color1, color2) {
-        // Return difference between two colors.
-        return toRGB(color1).map(function (value ,index) {
+    function calcColorDiff(hex1, hex2) {
+        // Return difference between two HEXs.
+        return toRGB(hex1).map(function (value ,index) {
                 // Get absolute difference between RGB's.
                 // i.e. [10, 50, 100] - [0, 128, 90] –> [10, 78, 10]
-                return Math.abs(value - toRGB(color2)[index])
+                return Math.abs(value - toRGB(hex2)[index])
             }).reduce(function (a, e) {
                 // Get sum of 3 difference values. i.e. [10, 78, 10] –> 98
                 return a + e

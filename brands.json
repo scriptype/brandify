@@ -1,22 +1,22 @@
 [
     {
-        "name": "lorem",
+        "name": "facebook",
         "colors": ["#ffff00", "#ff0000", "#ffffff"]
     },
     {
-        "name": "ipsum",
+        "name": "twitter",
         "colors": ["#aabbcc", "#ddeeff", "#112233"]
     },
     {
-        "name": "dolor",
+        "name": "google",
         "colors": ["#0000ff", "#112233", "#eeffee"]
     },
     {
-        "name": "sit",
+        "name": "microsoft",
         "colors": ["#ff0080", "#cc4444", "#44cc44"]
     },
     {
-        "name": "amet",
+        "name": "grooveshark",
         "colors": ["#ff00ff", "#333333", "#999999"]
     }
 ]
