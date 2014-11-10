@@ -81,11 +81,24 @@
     function toRGB(HEX) {
         // Remove hash from beginning.
         HEX = HEX.slice(1)
-        return [
-            HEX.slice(0, 2),// R as HEX
-            HEX.slice(2, 4),// G as HEX
-            HEX.slice(4, 6) // B as HEX
-        ].map(function(e) {
+        var RGB
+        // If HEX is shortened like #f08, duplicate each character.
+        if (HEX.length === 3) {
+            RGB = [
+                HEX.slice(0, 1) + HEX.slice(0, 1),// R as HEX
+                HEX.slice(1, 2) + HEX.slice(1, 2),// G as HEX
+                HEX.slice(2, 3) + HEX.slice(2, 3) // B as HEX
+            ]
+        } else {
+            RGB = [
+                HEX.slice(0, 2),// R as HEX
+                HEX.slice(2, 4),// G as HEX
+                HEX.slice(4, 6) // B as HEX
+            ]
+        }
+
+        // Return value as an array of integers.
+        return RGB.map(function(e) {
             return parseInt(e, 16)
         })
     }
