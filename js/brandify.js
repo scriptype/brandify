@@ -46,9 +46,16 @@
         $("#color-box").val(COLOR["HEX"])
     }
 
-    function rerender(event) {
+    function rerender(ev) {
+        // Do nothing on non-effective keys.
+        if (   ev.keyCode === 91 || ev.keyCode === 93
+            || ev.keyCode === 16 || ev.keyCode === 17 || ev.keyCode === 18
+            || ev.keyCode === 37 || ev.keyCode === 38
+            || ev.keyCode === 39 || ev.keyCode === 40)
+        return
+
         // Get the value of sliders or input, depending on which one was changed.
-        var isSlider = $(event.currentTarget).closest("label").hasClass("slider")
+        var isSlider = $(ev.currentTarget).closest("label").hasClass("slider")
         if (isSlider) {
             // Get sliders' values.
             var RGB = [
