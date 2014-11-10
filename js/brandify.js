@@ -17,6 +17,12 @@
         // Keep all brands when loaded.
         allBrands = JSON.parse(req.response)
 
+        // Sort brands alphabetically.
+        allBrands.sort(function (a, e) {
+            return a.name > e.name ? 1
+                : (a.name < e.name ? -1 : 0)
+        })
+
         // Render all brands for initialization.
         render(allBrands)
     }
