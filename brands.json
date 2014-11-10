@@ -1,22 +1,58 @@
 [
     {
-        "name": "facebook",
-        "colors": ["#ffff00", "#ff0000", "#ffffff"]
+        "name": "skype",
+        "colors": ["#008adf", "#f9fdfe"]
     },
     {
-        "name": "twitter",
-        "colors": ["#aabbcc", "#ddeeff", "#112233"]
+        "name": "filezilla",
+        "colors": ["#ad0000", "#ffffff"]
+    },
+    {
+        "name": "spotify",
+        "colors": ["#7cc500", "#020302"]
+    },
+    {
+        "name": "photoshop",
+        "colors": ["#005abe", "#00d8ff"]
     },
     {
         "name": "google",
-        "colors": ["#0000ff", "#112233", "#eeffee"]
+        "colors": ["#f60019", "#3482c9", "#ffd500", "#00c348"]
     },
     {
-        "name": "microsoft",
-        "colors": ["#ff0080", "#cc4444", "#44cc44"]
+        "name": "bittorrent",
+        "colors": ["#6d45a0", "#fbfff3"]
     },
     {
-        "name": "grooveshark",
-        "colors": ["#ff00ff", "#333333", "#999999"]
+        "name": "cmd.fm",
+        "colors": ["#000000", "#f9f9f9"]
+    },
+    {
+        "name": "firefox",
+        "colors": ["#de2600", "#fabb00", "#b3f5fd", "#0874c2"]
+    },
+    {
+        "name": "webstorm",
+        "colors": ["#009dc4", "#ffbe71", "#ff5a00"]
+    },
+    {
+        "name": "pycharm",
+        "colors": ["#f96b01", "#ffcf83", "#b3f5fd", "#6b947f"]
+    },
+    {
+        "name": "sublime text",
+        "colors": ["#4c4c4c", "#ff7400"]
+    },
+    {
+        "name": "adobe",
+        "colors": ["#f4f4f4", "#d20000"]
+    },
+    {
+        "name": "soundcloud",
+        "colors": ["#ff6600", "#ffffff"]
+    },
+    {
+        "name": "youtube",
+        "colors": ["#dc2725", "#ffffff", "#333333"]
     }
 ]

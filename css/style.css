@@ -169,6 +169,10 @@ header .filter-panel .filter.slider input {
 }
 header .filter-panel .filter.hex-color input {
   width: 50px;
+  border-radius: 3px;
+  border: none;
+  padding: 2px 5px;
+  box-shadow: inset 0 5px 10px -2px rgba(0, 0, 0, 0.4);
 }
 .brands-container .brand {
   width: 300px;
@@ -179,6 +183,7 @@ header .filter-panel .filter.hex-color input {
   border: 1px solid #cccccc;
   text-align: center;
   border-radius: 3px;
+  box-shadow: inset 0 -20px 80px -40px rgba(0, 0, 0, 0.4);
 }
 .brands-container .brand:nth-child(3n) {
   margin-right: 0;

@@ -49,7 +49,7 @@
         // Change the color of bar.
         $header.css("background", color["HEX"])
 
-        // If color is white-ish, get header know this.
+        // If color is white-ish, tell header this.
         if (isLight(color["RGB"]))
             $header.addClass("light")
         else
@@ -76,7 +76,7 @@
         color.RGB = RGB
         color.HEX = toHex(RGB)
 
-        rerender()
+        reRender()
     }
 
     function eventKeyup (ev) {
@@ -94,7 +94,7 @@
         color.HEX = colorValue
         color.RGB = toRGB(colorValue)
 
-        rerender()
+        reRender()
     }
 
     function eventClick (ev) {
@@ -105,14 +105,73 @@
         color.HEX = colorValue
         color.RGB = toRGB(colorValue)
 
-        rerender()
+        reRender()
     }
 
-    function rerender() {
+    function reRender() {
         // Filter by new color.
-        var filteredBrands = filterBrands(color["HEX"])
+        var brandsFiltered = filterBrands(color["HEX"]),
+        // Sort by relevance.
+            brandsSorted = sortBrands(brandsFiltered)
+
         // Render brands.
-        render(filteredBrands)
+        render(brandsSorted)
+    }
+
+    function filterBrands(HEX) {
+        // Prepare results.
+        var filteredBrands = [],
+        // Difference limit.
+            limit = 64
+
+        // Check each brand.
+        var brand
+        for (brand in allBrands) {
+            if (allBrands.hasOwnProperty(brand)) {
+                // Save as a variable for easy-access.
+                var brandColors = allBrands[brand]["colors"],
+                    i = 0
+                // Check each color of brand.
+                for (i; i < brandColors.length; i++) {
+                    // Difference of color.
+                    var colorDiff = calcColorDiff(brandColors[i], HEX)
+                    // If color has acceptable or no difference from user input,
+                    if (colorDiff <= limit) {
+                        // Push both brand and diff number.
+                        filteredBrands.push({
+                            brand: allBrands[brand],
+                            diff: colorDiff
+                        })
+                        // Stop iterating colors of same brand.
+                        break
+                    }
+                }
+            }
+        }
+
+        return filteredBrands
+    }
+
+    function sortBrands (brandsList) {
+        return brandsList.sort(function (a, e) {
+                // Sort brands by diff value being minimum.
+                return e.diff < a.diff
+            }).map(function(e) {
+                // Reduce object to brand-level for rendering.
+                return e.brand
+            })
+    }
+
+    function calcColorDiff(hex1, hex2) {
+        // Return difference between two HEXs.
+        return toRGB(hex1).map(function (value, index) {
+            // Get absolute difference between RGB's.
+            // i.e. [10, 50, 100] - [0, 128, 90] –> [10, 78, 10]
+            return Math.abs(value - toRGB(hex2)[index])
+        }).reduce(function (a, e) {
+            // Get sum of 3 difference values. i.e. [10, 78, 10] –> 98
+            return a + e
+        })
     }
 
     // Turn RGB array into an hexadecimal color value. i.e. [255, 0, 128] –> #ff0080
@@ -150,51 +209,10 @@
         })
     }
 
-    function filterBrands(HEX) {
-        // Prepare results.
-        var filteredBrands = [],
-        // Difference limit.
-            limit = 64
-
-        // Check each brand.
-        var brand
-        for (brand in allBrands) {
-            if (allBrands.hasOwnProperty(brand)) {
-                // Save as a variable for easy-access.
-                var brandColors = allBrands[brand]["colors"],
-                    i = 0
-                // Check each color of brand.
-                for (i; i < brandColors.length; i++) {
-                    // If color has acceptable or no difference from user input,
-                    if (calcColorDiff(brandColors[i], HEX) <= limit) {
-                        // Keep brand for render.
-                        filteredBrands.push(allBrands[brand])
-                        // Stop iterating colors of same brand.
-                        break
-                    }
-                }
-            }
-        }
-
-        return filteredBrands
-    }
-
-    function calcColorDiff(hex1, hex2) {
-        // Return difference between two HEXs.
-        return toRGB(hex1).map(function (value ,index) {
-                // Get absolute difference between RGB's.
-                // i.e. [10, 50, 100] - [0, 128, 90] –> [10, 78, 10]
-                return Math.abs(value - toRGB(hex2)[index])
-            }).reduce(function (a, e) {
-                // Get sum of 3 difference values. i.e. [10, 78, 10] –> 98
-                return a + e
-            })
-    }
-
     function isLight (RGB) {
         // Is R+G+B > 640?
-        var whiteIsh = 640 < RGB.reduce(function (e, a) {
-                return e + a
+        var whiteIsh = 640 < RGB.reduce(function (a, e) {
+                return a + e
             }),
             // Is R+G > 480
             yellowIsh = RGB[0] + RGB[1] > 480
