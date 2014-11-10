@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Brandify by colors</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Brandify</h1>
+        <div class="filter-panel">
+            <label for="red" class="filter slider">
+                <span>R:</span>
+                <input id="red" type="range" min="0" max="255" value="0" />
+            </label>
+            <label for="green" class="filter slider">
+                <span>G:</span>
+                <input id="green" type="range" min="0" max="255" value="0" />
+            </label>
+            <label for="blue" class="filter slider">
+                <span>B:</span>
+                <input id="blue" type="range" min="0" max="255" value="0" />
+            </label>
+            <label for="color-box" class="filter hex-color">
+                <span>HEX:</span>
+                <input id="color-box" type="text" maxlength="7" placeholder="#000000" value="#000000" />
+            </label>
+        </div>
+    </header>
+    <div class="brands-container">
+        {{BRANDS}}
+    </div>
+</div>
+
+
+<!-- * SCRIPTS * -->
+<!-- Brand Template -->
+<script id="brand-template" type="text/x-handlebars-template">
+    <ul class="main-grid">
+        {{#each this}}
+            <li class="brand">
+                <h2>{{name}}</h2>
+                <ul class="color-list">
+                    {{#each colors}}
+                        <li style="background:{{this}}"></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+</script>
+
+<!-- Library -->
+<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="lib/handlebars-v1.3.0.js"></script>
+
+<!-- Application -->
+<script type="text/javascript" src="js/brandify.js"></script>
+
+</body>
+</html>

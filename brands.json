@@ -1,0 +1,22 @@
+[
+    {
+        "name": "lorem",
+        "colors": ["#ffff00", "#ff0000", "#ffffff"]
+    },
+    {
+        "name": "ipsum",
+        "colors": ["#aabbcc", "#ddeeff", "#112233"]
+    },
+    {
+        "name": "dolor",
+        "colors": ["#0000ff", "#112233", "#eeffee"]
+    },
+    {
+        "name": "sit",
+        "colors": ["#ff0080", "#cc4444", "#44cc44"]
+    },
+    {
+        "name": "amet",
+        "colors": ["#ff00ff", "#333333", "#999999"]
+    }
+]
