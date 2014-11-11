@@ -160,18 +160,18 @@ header h1 {
   line-height: 1.5em;
   text-transform: uppercase;
 }
-header .filter-panel {
+.filter-panel {
   display: inline-block;
   text-align: center;
   line-height: 50px;
 }
-header .filter-panel .filter {
+.filter-panel .filter {
   font-family: "courier new", menlo, monospace;
 }
-header .filter-panel .filter.slider input {
+.filter-panel .filter.slider input {
   width: 100px;
 }
-header .filter-panel .filter.hex-color input {
+.filter-panel .filter.hex-color input {
   width: 50px;
   border: none;
   padding: 2px 5px;

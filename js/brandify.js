@@ -1,5 +1,7 @@
 (function(){
 
+    "use strict";
+
     // Color that will be looked for.
     var color = {
             RGB: [0, 0, 0],
@@ -15,7 +17,7 @@
 
     function init() {
         // Keep all brands when loaded.
-        allBrands = JSON.parse(req.response)
+        allBrands = JSON.parse(req.responseText)
 
         // Sort brands alphabetically.
         allBrands.sort(function (a, e) {
@@ -34,7 +36,7 @@
             .on("change", eventSlide)
         // HEX input
         $("#color-box").off("keyup")
-            .on("keyup", eventKeyup)
+            .on("keyup", eventKeyUp)
         // Brand color-list
         $(".color-list li").off("click")
             .on("click", eventClick)
@@ -49,28 +51,28 @@
         // Render brands.
         $target.html(html)
 
-        // Re-attach events as DOM is resetted.
+        // Re-attach events as DOM is reset.
         propagateEvents()
 
-        // Change the color of bar.
-        $header.css("background", color["HEX"])
+        // Reset slider values.
+        $("#red").val(color.RGB[0])
+        $("#green").val(color.RGB[1])
+        $("#blue").val(color.RGB[2])
 
-        // If color is white-ish, tell header this.
-        if (isLight(color["RGB"]))
+        // Reset input's value.
+        $("#color-box").val(color.HEX)
+
+        // Change the color of bar.
+        $header.css("background", color.HEX)
+
+        // If color is bright, tell header this.
+        if (isLight(color.RGB))
             $header.addClass("light")
         else
             $header.removeClass("light")
-
-        // Reset slider values.
-        $("#red").val(color["RGB"][0])
-        $("#green").val(color["RGB"][1])
-        $("#blue").val(color["RGB"][2])
-
-        // Reset input's value.
-        $("#color-box").val(color["HEX"])
     }
 
-    function eventSlide (ev) {
+    function eventSlide () {
         // Get sliders' values.
         var RGB = [
             parseInt($("input#red").val()),
@@ -85,7 +87,7 @@
         reRender()
     }
 
-    function eventKeyup (ev) {
+    function eventKeyUp (ev) {
         // Do nothing on non-effective keys.
         if (   ev.keyCode === 91 || ev.keyCode === 93
             || ev.keyCode === 16 || ev.keyCode === 17 || ev.keyCode === 18
@@ -104,7 +106,7 @@
     }
 
     function eventClick (ev) {
-        // Get input's value.
+        // Get HEX from data-color attribute.
         var colorValue = $(ev.currentTarget).data("color")
 
         // Change color.
@@ -116,7 +118,7 @@
 
     function reRender() {
         // Filter by new color.
-        var brandsFiltered = filterBrands(color["HEX"]),
+        var brandsFiltered = filterBrands(color.HEX),
         // Sort by relevance.
             brandsSorted = sortBrands(brandsFiltered)
 
@@ -134,7 +136,7 @@
         var brand
         for (brand in allBrands) {
             if (allBrands.hasOwnProperty(brand)) {
-                // Save as a variable for easy-access.
+                // Save color list for easy-access.
                 var brandColors = allBrands[brand]["colors"],
                     i = 0
                 // Check each color of brand.
@@ -143,7 +145,7 @@
                     var colorDiff = calcColorDiff(brandColors[i], HEX)
                     // If color has acceptable or no difference from user input,
                     if (colorDiff <= limit) {
-                        // Push both brand and diff number.
+                        // Push brand and diff value.
                         filteredBrands.push({
                             brand: allBrands[brand],
                             diff: colorDiff
@@ -171,7 +173,7 @@
     function calcColorDiff(hex1, hex2) {
         // Return difference between two HEXs.
         return toRGB(hex1).map(function (value, index) {
-            // Get absolute difference between RGB's.
+            // Get absolute difference between RGBs.
             // i.e. [10, 50, 100] - [0, 128, 90] –> [10, 78, 10]
             return Math.abs(value - toRGB(hex2)[index])
         }).reduce(function (a, e) {
@@ -180,7 +182,7 @@
         })
     }
 
-    // Turn RGB array into an hexadecimal color value. i.e. [255, 0, 128] –> #ff0080
+    // Turn RGB array into a HEX color. i.e. [255, 0, 128] –> #ff0080
     function toHex(RGB) {
         return "#" + RGB.map(function (e) {
             return ("0" + parseInt(e).toString(16)).slice(-2)
@@ -217,14 +219,14 @@
 
     function isLight (RGB) {
         // Is R+G+B > 640?
-        var whiteIsh = 640 < RGB.reduce(function (a, e) {
+        var bright = 640 < RGB.reduce(function (a, e) {
                 return a + e
             }),
             // Is R+G > 480
             yellowIsh = RGB[0] + RGB[1] > 480
 
-        // It's a light color if it's white-ish or yellow-ish.
-        return whiteIsh || yellowIsh
+        // It's a light color if it's bright or yellow-ish.
+        return bright || yellowIsh
     }
 
 })()
