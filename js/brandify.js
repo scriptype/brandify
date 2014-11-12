@@ -1,5 +1,4 @@
 (function(){
-
     "use strict";
 
     // Color that will be looked for.
@@ -43,13 +42,20 @@
     }
 
     function render(brands) {
-        var brandTemplate = Handlebars.compile($("#brand-template").html()),
-            $target = $(".brands-container"),
-            $header = $("header"),
-            html = brandTemplate(brands)
+        // Prepare template.
+        var brandTemplate = Handlebars.compile($("#brand-template").html())
+
+        // Target element.
+        var $target = $(".brands-container")
+
+        // Prepare HTML.
+        var HTML = brandTemplate(brands)
+
+        // Header.
+        var $header = $("header")
 
         // Render brands.
-        $target.html(html)
+        $target.html(HTML)
 
         // Re-attach events as DOM is reset.
         propagateEvents()
