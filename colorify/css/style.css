@@ -213,9 +213,9 @@ h1:hover .tooltip {
   width: 1100px;
   margin: 0 auto;
   overflow: hidden;
+  display: none;
 }
 .result-container .title {
-  display: none;
   font-size: .8em;
   text-transform: uppercase;
   text-align: center;
@@ -227,6 +227,5 @@ h1:hover .tooltip {
   margin-right: 10px;
 }
 .result-container #result {
-  background: #000;
-  display: none;
+  background: #000000;
 }

@@ -2,15 +2,17 @@
     "use strict";
 
     // Get elements.
-    var $input       = $("#receiver"),
-        $loading     = $(".loading"),
-        $info        = $(".info"),
-        imageCanvas  = $("#image").get(0),
-        resultCanvas = $("#result").get(0),
-        $resultTitle = $("#result-text"),
-        $fileTitle   = $("#file-text")
+    var $input           = $("#receiver"),
+        $loading         = $(".loading"),
+        $info            = $(".info"),
+        imageCanvas      = $("#image").get(0),
+        $resultContainer = $(".result-container"),
+        resultCanvas     = $resultContainer.find("#result").get(0),
+        $fileTitle       = $("#file-text")
 
+    // Keep default info text.
     var defaultInfoText = $info.text()
+
     // When a file selected.
     $input.on("change", function() {
         // Get file.
@@ -32,9 +34,6 @@
         // Show loading indicator.
         $loading.show()
 
-        // Set file header.
-        $fileTitle.text(file.name)
-
         // Get an instance of FileReader.
         var reader = new FileReader()
 
@@ -46,11 +45,14 @@
             // Create new image.
             var img = new Image()
 
-            // Set source as new data url.
+            // Set new data url as source of image.
             img.src = reader.result
 
             // Draw image to canvas.
             drawImage(img)
+
+            // Set file title.
+            $fileTitle.text(file.name)
         }
     })
 
@@ -91,7 +93,7 @@
         // So {n * 4} means {n} pixels.
         var step = 10 * 4
 
-        // Unique pixels data.
+        // Unique pixels holder.
         var uniquePixels = []
 
         // Iterate through data.
@@ -106,6 +108,7 @@
                 imageData[i + 2], // B
                 imageData[i + 3]  // A
             ]
+
             // If this is the first instance of this color,
             if (isUnique(RGBA, uniquePixels))
                 // Keep it.
@@ -178,14 +181,10 @@
         }
 
         // Show the result.
-        $(resultCanvas).show()
+        $resultContainer.show()
 
         // Hide loading indicator.
         $loading.hide()
-
-        // Show result headings.
-        $fileTitle.show()
-        $resultTitle.show()
     }
 
     function toggleInfo (text, isError) {
@@ -197,6 +196,7 @@
                 $info.addClass("error")
             else
                 $info.removeClass("error")
+
             $info.fadeIn(300)
         })
     }
