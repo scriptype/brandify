@@ -216,9 +216,19 @@ h1:hover .tooltip {
   display: none;
 }
 .result-container .title {
+  margin-bottom: .5em;
   font-size: .8em;
   text-transform: uppercase;
   text-align: center;
+}
+.result-container .title span {
+  padding: .2em 1em;
+  background: rgba(130, 140, 210, 0.4);
+  color: #444444;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3), inset -1px -1px 1px rgba(255, 255, 255, 0.3), inset 0 3px 10px -3px rgba(0, 0, 0, 0.5);
+  cursor: default;
 }
 .result-container div {
   float: left;

@@ -8,7 +8,7 @@
         imageCanvas      = $("#image").get(0),
         $resultContainer = $(".result-container"),
         resultCanvas     = $resultContainer.find("#result").get(0),
-        $fileTitle       = $("#file-text")
+        $fileTitle       = $("#file-text").find("span")
 
     // Keep default info text.
     var defaultInfoText = $info.text()
