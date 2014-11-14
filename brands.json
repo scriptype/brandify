@@ -1,72 +1,121 @@
 [
     {
-        "name": "skype",
-        "colors": ["#008adf", "#f9fdfe"],
-        "tags": ["software", "communication"]
+        "name": "3m",
+        "sector": "diversified",
+        "colors": [
+            "rgba(237,35,36,255)"
+        ]
     },
     {
-        "name": "filezilla",
-        "colors": ["#ad0000", "#ffffff"],
-        "tags": ["software"]
+        "name": "accenture",
+        "sector": "business services",
+        "colors": [
+            "rgba(0,0,0,255)"
+        ]
     },
     {
-        "name": "spotify",
-        "colors": ["#7cc500", "#020302"],
-        "tags": ["music", "web"]
-    },
-    {
-        "name": "photoshop",
-        "colors": ["#005abe", "#00d8ff"],
-        "tags": ["software", "graphic editing"]
-    },
-    {
-        "name": "google",
-        "colors": ["#f60019", "#3482c9", "#ffd500", "#00c348"],
-        "tags": ["web", "search"]
-    },
-    {
-        "name": "bittorrent",
-        "colors": ["#6d45a0", "#fbfff3"],
-        "tags": ["software", "download"]
-    },
-    {
-        "name": "cmd.fm",
-        "colors": ["#000000", "#f9f9f9"],
-        "tags": ["music", "web"]
-    },
-    {
-        "name": "firefox",
-        "colors": ["#de2600", "#fabb00", "#b3f5fd", "#0874c2"],
-        "tags": ["software", "web"]
-    },
-    {
-        "name": "webstorm",
-        "colors": ["#009dc4", "#ffbe71", "#ff5a00"],
-        "tags": ["software", "web"]
-    },
-    {
-        "name": "pycharm",
-        "colors": ["#f96b01", "#ffcf83", "#b3f5fd", "#6b947f"],
-        "tags": ["software", "code"]
-    },
-    {
-        "name": "sublime text",
-        "colors": ["#4c4c4c", "#ff7400"],
-        "tags": ["software", "code"]
+        "name": "adidas",
+        "sector": "sporting goods",
+        "colors": [
+            "rgba(0,0,0,255)"
+        ]
     },
     {
         "name": "adobe",
-        "colors": ["#f4f4f4", "#d20000"],
-        "tags": ["software"]
+        "sector": "technology",
+        "colors": [
+            "rgba(255,37,0,255)",
+            "rgba(0,0,0,255)"
+        ]
     },
     {
-        "name": "soundcloud",
-        "colors": ["#ff6600", "#ffffff"],
-        "tags": ["music", "web"]
+        "name": "amazon",
+        "sector": "retail",
+        "colors": [
+            "rgba(0,0,0,255)",
+            "rgba(254,155,1,255)"
+        ]
     },
     {
-        "name": "youtube",
-        "colors": ["#dc2725", "#ffffff", "#333333"],
-        "tags": ["music", "video", "web"]
+        "name": "allianz",
+        "sector": "financial services",
+        "colors": [
+            "rgba(18,51,135,255)"
+        ]
+    },
+    {
+        "name": "american express",
+        "sector": "financial services",
+        "colors": [
+            "rgba(101,191,234,255)",
+            "rgba(18,125,195,255)",
+            "rgba(60,167,220,255)",
+            "rgba(255,255,255,255)"
+        ]
+    },
+    {
+        "name": "apple",
+        "sector": "technology",
+        "colors": [
+            "rgba(134,134,134,255)"
+        ]
+    },
+    {
+        "name": "audi",
+        "sector": "automotive",
+        "colors": [
+            "rgba(255,255,255,255)",
+            "rgba(0,0,0,255)",
+            "rgba(16,26,32,255)",
+            "rgba(226,34,56,255)"
+        ]
+    },
+    {
+        "name": "axa",
+        "sector": "financial services",
+        "colors": [
+            "rgba(1,75,148,255)",
+            "rgba(255,39,59,255)",
+            "rgba(255,255,255,255)"
+        ]
+    },
+    {
+        "name": "bmw",
+        "sector": "automotive",
+        "colors": [
+            "rgba(255,255,255,255)",
+            "rgba(0,0,0,255)",
+            "rgba(221,223,225,255)"
+        ]
+    },
+    {
+        "name": "budweiser",
+        "sector": "alcohol",
+        "colors": [
+            "rgba(238,46,37,255)",
+            "rgba(178,35,28,255)",
+            "rgba(255,255,255,255)"
+        ]
+    },
+    {
+        "name": "burbery",
+        "sector": "luxury",
+        "colors": [
+            "rgba(0,0,0,255)"
+        ]
+    },
+    {
+        "name": "canon",
+        "sector": "electronics",
+        "colors": [
+            "rgba(250,37,31,255)"
+        ]
+    },
+    {
+        "name": "cartier",
+        "sector": "luxury",
+        "colors": [
+            "rgba(0,0,0,255)"
+        ]
     }
 ]
