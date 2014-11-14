@@ -1,0 +1,12 @@
+.success {
+  color: #55cc88;
+}
+.warning {
+  color: #ffaa44;
+}
+.fail {
+  color: #cc4444;
+}
+.monospace {
+  font-family: "input mono", menlo, monaco, monospace;
+}

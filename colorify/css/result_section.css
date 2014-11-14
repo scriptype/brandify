@@ -1,0 +1,27 @@
+.success {
+  color: #55cc88;
+}
+.warning {
+  color: #ffaa44;
+}
+.fail {
+  color: #cc4444;
+}
+.monospace {
+  font-family: "input mono", menlo, monaco, monospace;
+}
+.result {
+  background: #e3e4ea;
+  border-left: 1px solid #d4d6df;
+  font-family: "input mono", menlo, monaco, monospace;
+}
+.information h3 {
+  font-size: 1.618em;
+  margin-bottom: 1em;
+}
+.information h3:not( :nth-of-type(1)) {
+  margin-top: 1em;
+}
+.json {
+  text-overflow: ellipsis;
+}

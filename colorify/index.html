@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Colorify</title>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="main">
+        <header>
+            <h1>Colorify
+                <span class="tooltip">Extract unique colors from images.</span>
+            </h1>
+        </header>
+
+        <section class="content">
+
+            <div class="starting content-box">
+                <p id="start-info">Getting brands data...</p>
+                <div id="brand-list"></div>
+                <button type="button" id="start" class="start-button">Start Processing</button>
+            </div>
+
+            <div class="content-box">
+                <canvas id="image" width="500" height="300"></canvas>
+            </div>
+
+        </section>
+    </section>
+
+    <aside class="result">
+        <div class="information">
+            <h3>Settings</h3>
+            <ul class="settings">
+                <li id="diff-limit">Min Color Difference: <span></span></li>
+                <li id="step">Grid Step: <span></span></li>
+                <li>Data: Brand List</li>
+            </ul>
+            <h3>Results</h3>
+        </div>
+        <pre class="json"></pre>
+    </aside>
+
+</div>
+
+<!-- Templates -->
+<script id="brands-template" type="text/x-handlebars-template">
+    <ul class="brand-list">
+        {{#each this}}
+            <li class="{{status}}" data-name="{{name}}">{{name}}</li>
+        {{/each}}
+    </ul>
+</script>
+
+<!-- Library -->
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../lib/handlebars-v1.3.0.js"></script>
+
+<!-- Application -->
+<script type="text/javascript" src="js/colorify.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+
+</body>
+</html>
