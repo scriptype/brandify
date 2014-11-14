@@ -3,119 +3,119 @@
         "name": "3m",
         "sector": "diversified",
         "colors": [
-            "rgba(237,35,36,255)"
+            "#ed2324"
         ]
     },
     {
         "name": "accenture",
         "sector": "business services",
         "colors": [
-            "rgba(0,0,0,255)"
+            "#000000"
         ]
     },
     {
         "name": "adidas",
         "sector": "sporting goods",
         "colors": [
-            "rgba(0,0,0,255)"
+            "#000000"
         ]
     },
     {
         "name": "adobe",
         "sector": "technology",
         "colors": [
-            "rgba(255,37,0,255)",
-            "rgba(0,0,0,255)"
+            "#ff2500",
+            "#000000"
         ]
     },
     {
         "name": "amazon",
         "sector": "retail",
         "colors": [
-            "rgba(0,0,0,255)",
-            "rgba(254,155,1,255)"
+            "#000000",
+            "#fe9b01"
         ]
     },
     {
         "name": "allianz",
         "sector": "financial services",
         "colors": [
-            "rgba(18,51,135,255)"
+            "#123387"
         ]
     },
     {
         "name": "american express",
         "sector": "financial services",
         "colors": [
-            "rgba(101,191,234,255)",
-            "rgba(18,125,195,255)",
-            "rgba(60,167,220,255)",
-            "rgba(255,255,255,255)"
+            "#65bfea",
+            "#127dc3",
+            "#3ca7dc",
+            "#ffffff"
         ]
     },
     {
         "name": "apple",
         "sector": "technology",
         "colors": [
-            "rgba(134,134,134,255)"
+            "#868686"
         ]
     },
     {
         "name": "audi",
         "sector": "automotive",
         "colors": [
-            "rgba(255,255,255,255)",
-            "rgba(0,0,0,255)",
-            "rgba(16,26,32,255)",
-            "rgba(226,34,56,255)"
+            "#ffffff",
+            "#000000",
+            "#101a20",
+            "#e22238"
         ]
     },
     {
         "name": "axa",
         "sector": "financial services",
         "colors": [
-            "rgba(1,75,148,255)",
-            "rgba(255,39,59,255)",
-            "rgba(255,255,255,255)"
+            "#014b94",
+            "#ff273b",
+            "#ffffff"
         ]
     },
     {
         "name": "bmw",
         "sector": "automotive",
         "colors": [
-            "rgba(255,255,255,255)",
-            "rgba(0,0,0,255)",
-            "rgba(221,223,225,255)"
+            "#ffffff",
+            "#000000",
+            "#dddfe1"
         ]
     },
     {
         "name": "budweiser",
         "sector": "alcohol",
         "colors": [
-            "rgba(238,46,37,255)",
-            "rgba(178,35,28,255)",
-            "rgba(255,255,255,255)"
+            "#ee2e25",
+            "#b2231c",
+            "#ffffff"
         ]
     },
     {
         "name": "burbery",
         "sector": "luxury",
         "colors": [
-            "rgba(0,0,0,255)"
+            "#000000"
         ]
     },
     {
         "name": "canon",
         "sector": "electronics",
         "colors": [
-            "rgba(250,37,31,255)"
+            "#fa251f"
         ]
     },
     {
         "name": "cartier",
         "sector": "luxury",
         "colors": [
-            "rgba(0,0,0,255)"
+            "#000000"
         ]
     }
 ]

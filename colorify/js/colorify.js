@@ -38,7 +38,7 @@ function colorify (options) {
         var imageData = context.getImageData(0, 0, width, height).data
 
         // Process image data by steps.
-        // As a single pixel consists of 4 values (RGBA), multiply step by 4.
+        // As a single pixel consists of 4 values (rgb), multiply step by 4.
         // So {n * 4} means {n} pixels.
         var step = options.step * 4
 
@@ -51,17 +51,16 @@ function colorify (options) {
         for (i; i < imageData.length; i += step) {
             // ith element of data is the starting point of a new pixel.
             // So collect it and other 3 following it.
-            var rgba = [
+            var rgb = [
                 imageData[i],     // R
                 imageData[i + 1], // G
-                imageData[i + 2], // B
-                imageData[i + 3]  // A
+                imageData[i + 2] // B
             ]
 
             // If color is full opaque,
-            if (rgba[3] === 255) {
+            if (imageData[i + 3] === 255) {
                 // Keep it.
-                opaquePixels.push(rgba)
+                opaquePixels.push(rgb)
             }
         }
 
@@ -88,30 +87,32 @@ function colorify (options) {
             }
         }
 
-        // Map pixels to RGBA strings.
-        var rgbaStrings = stringifyRgba(differentPixels)
+        // Map pixels to HEX strings.
+        var hexStrings = differentPixels.map(function (rgb) {
+            return toHex(rgb)
+        })
 
-        options.callback(rgbaStrings)
+        options.callback(hexStrings)
     }
 
     // Detect if a color have been seen in multiple places in image.
-    function isCommon (rgba, pool) {
+    function isCommon (rgb, pool) {
         var minCommonLimit = 5
 
         var samePixels = pool.filter(function(px) {
-            return !calcColorDiff(rgba, px)
+            return !calcColorDiff(rgb, px)
         })
 
         return samePixels.length > minCommonLimit
     }
 
     // Eliminate similar tones of a color.
-    function hasNoSimilar (rgba, pool) {
+    function hasNoSimilar (rgb, pool) {
         var different = true
 
         var i = 0
         for (i; i < pool.length; i++) {
-            if (calcColorDiff(rgba, pool[i]) < options.diffLimit) {
+            if (calcColorDiff(rgb, pool[i]) < options.diffLimit) {
                 different = false
                 break
             }
@@ -120,27 +121,23 @@ function colorify (options) {
         return different
     }
 
-    function calcColorDiff(rgba1, rgba2) {
-        // Return difference between two RGBA.
-        return rgba1.map(function (value, index) {
+    function calcColorDiff(rgb1, rgb2) {
+        // Return difference between two RGB.
+        return rgb1.map(function (value, index) {
             // Get absolute difference between RGBs.
             // i.e. [10, 50, 100, 255] - [0, 128, 90, 255] –> [10, 78, 10, 0]
-            return Math.abs(value - rgba2[index])
+            return Math.abs(value - rgb2[index])
         }).reduce(function (a, e) {
             // Get sum of 3 difference values. i.e. [10, 78, 10] –> 98
             return a + e
         })
     }
 
-    // Transform an array of 4 valued arrays into an array of RGBA strings
-    function stringifyRgba (pixelData) {
-        return pixelData.map(function(e) {
-            return "rgba(" +
-                e[0] + "," + // R
-                e[1] + "," + // G
-                e[2] + "," + // B
-                e[3] + ")"   // A
-        })
+    // Turn RGB array into a HEX color. i.e. [255, 0, 128] –> #ff0080
+    function toHex(RGB) {
+        return "#" + RGB.map(function (e) {
+            return ("0" + parseInt(e).toString(16)).slice(-2)
+        }).join("")
     }
 
 }
