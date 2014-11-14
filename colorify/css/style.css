@@ -231,6 +231,9 @@ h1:hover .tooltip {
   color: #f8f8f8;
   cursor: default;
 }
+.image {
+  text-align: center;
+}
 .result {
   background: #e3e4ea;
   border-left: 1px solid #d4d6df;

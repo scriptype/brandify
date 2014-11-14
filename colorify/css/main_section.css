@@ -103,3 +103,6 @@ h1:hover .tooltip {
   color: #f8f8f8;
   cursor: default;
 }
+.image {
+  text-align: center;
+}

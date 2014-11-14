@@ -7,7 +7,7 @@
         $brandList = $("#brand-list"),
         $result = $(".result"),
         $settings = $(".settings"),
-        countDown = seconds(3),
+        countDown = seconds(4),
         waitTime = seconds(2),
         diffLimit = 64,
         step = 20,
