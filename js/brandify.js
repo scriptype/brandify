@@ -20,8 +20,8 @@
 
         // Sort brands alphabetically.
         allBrands.sort(function (a, e) {
-            return a.name > e.name ? 1
-                : (a.name < e.name ? -1 : 0)
+            return a.name.toUpperCase() > e.name.toUpperCase() ? 1
+                : (a.name.toUpperCase() < e.name.toUpperCase() ? -1 : 0)
         })
 
         // Render all brands for initialization.
