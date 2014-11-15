@@ -181,7 +181,7 @@ h1:hover .tooltip {
   text-align: center;
 }
 .starting p {
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 .brand-list {
   overflow: hidden;
@@ -233,6 +233,9 @@ h1:hover .tooltip {
 }
 .image {
   text-align: center;
+}
+.image #image {
+  display: none;
 }
 .result {
   background: #e3e4ea;
@@ -298,6 +301,9 @@ button:focus {
 .container .main {
   width: 61.8%;
   padding: 1.618em 2em;
+}
+.container .main .content {
+  height: 100%;
 }
 .container .result {
   width: 38.2%;

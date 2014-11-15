@@ -2,10 +2,18 @@ function colorify (options) {
     "use strict"
 
     // Get elements.
-    var imageCanvas = $("#image").get(0)
+    var canvas = options.canvas
 
     // Create new image.
     var img = new Image()
+
+    // Get data url.
+    var dataURL = options.list[options.current]["logoDataURL"]
+
+    if (!dataURL) {
+        options.callback([])
+        return
+    }
 
     // Set new data url as source of image.
     img.src = options.list[options.current]["logoDataURL"]
@@ -20,11 +28,11 @@ function colorify (options) {
 
         // Make canvas dimensions same as image dimensions.
         // Image will just fit into canvas context.
-        imageCanvas.width = w
-        imageCanvas.height = h
+        canvas.width = w
+        canvas.height = h
 
         // Get context of canvas.
-        var ctx = imageCanvas.getContext("2d")
+        var ctx = canvas.getContext("2d")
 
         // Draw image.
         ctx.drawImage(image, 0, 0, w, h)

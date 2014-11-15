@@ -1,51 +1,135 @@
 [
     {
-        "name": "3m",
-        "sector": "diversified",
+        "name": "Apple",
+        "sector": "Technology",
         "colors": [
-            "#ed2324"
+            "#868686"
         ]
     },
     {
-        "name": "accenture",
-        "sector": "business services",
+        "name": "Google",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Coca-Cola",
+        "sector": "Beverages",
+        "colors": [
+            "#e92221"
+        ]
+    },
+    {
+        "name": "IBM",
+        "sector": "Business Services",
+        "colors": []
+    },
+    {
+        "name": "Microsoft",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "GE",
+        "sector": "Diversified",
+        "colors": [
+            "#24a1dd"
+        ]
+    },
+    {
+        "name": "Samsung",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Toyota",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "McDonald's",
+        "sector": "Restaurants",
+        "colors": []
+    },
+    {
+        "name": "Mercedes-Benz",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "BMW",
+        "sector": "Automotive",
+        "colors": [
+            "#ffffff",
+            "#000000",
+            "#dddfe1"
+        ]
+    },
+    {
+        "name": "Intel",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Disney",
+        "sector": "Media",
         "colors": [
             "#000000"
         ]
     },
     {
-        "name": "adidas",
-        "sector": "sporting goods",
+        "name": "Cisco",
+        "sector": "Technology",
         "colors": [
-            "#000000"
+            "#2f6681",
+            "#991200"
         ]
     },
     {
-        "name": "adobe",
-        "sector": "technology",
-        "colors": [
-            "#ff2500",
-            "#000000"
-        ]
-    },
-    {
-        "name": "amazon",
-        "sector": "retail",
+        "name": "Amazon",
+        "sector": "Retail",
         "colors": [
             "#000000",
             "#fe9b01"
         ]
     },
     {
-        "name": "allianz",
-        "sector": "financial services",
-        "colors": [
-            "#123387"
-        ]
+        "name": "Oracle",
+        "sector": "Technology",
+        "colors": []
     },
     {
-        "name": "american express",
-        "sector": "financial services",
+        "name": "HP",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Gillette",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "Louis Vuitton",
+        "sector": "Luxury",
+        "colors": []
+    },
+    {
+        "name": "Honda",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "H&M",
+        "sector": "Apparel",
+        "colors": []
+    },
+    {
+        "name": "Nike",
+        "sector": "Sporting Goods",
+        "colors": []
+    },
+    {
+        "name": "American Express",
+        "sector": "Financial Services",
         "colors": [
             "#65bfea",
             "#127dc3",
@@ -54,15 +138,135 @@
         ]
     },
     {
-        "name": "apple",
-        "sector": "technology",
+        "name": "Pepsi",
+        "sector": "Beverages",
+        "colors": []
+    },
+    {
+        "name": "SAP",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "IKEA",
+        "sector": "Retail",
+        "colors": []
+    },
+    {
+        "name": "UPS",
+        "sector": "Transportation",
+        "colors": []
+    },
+    {
+        "name": "eBay",
+        "sector": "Retail",
         "colors": [
-            "#868686"
+            "#0062d1",
+            "#f4ad01",
+            "#e22f37",
+            "#85b715"
         ]
     },
     {
-        "name": "audi",
-        "sector": "automotive",
+        "name": "Facebook",
+        "sector": "Technology",
+        "colors": [
+            "#3c589e",
+            "#ffffff",
+            "#9faacc"
+        ]
+    },
+    {
+        "name": "Pampers",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "Volkswagen",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "Kellogg's",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "HSBC",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Budweiser",
+        "sector": "Alcohol",
+        "colors": [
+            "#ee2e25",
+            "#b2231c",
+            "#ffffff"
+        ]
+    },
+    {
+        "name": "J.P. Morgan",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Zara",
+        "sector": "Apparel",
+        "colors": []
+    },
+    {
+        "name": "Canon",
+        "sector": "Electronics",
+        "colors": [
+            "#fa251f"
+        ]
+    },
+    {
+        "name": "Nescafé",
+        "sector": "Beverages",
+        "colors": []
+    },
+    {
+        "name": "Ford",
+        "sector": "Automotive",
+        "colors": [
+            "#1ea6df",
+            "#ffffff",
+            "#004281",
+            "#c8c9cb"
+        ]
+    },
+    {
+        "name": "Hyundai",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "Gucci",
+        "sector": "Luxury",
+        "colors": []
+    },
+    {
+        "name": "Philips",
+        "sector": "Electronics",
+        "colors": []
+    },
+    {
+        "name": "L’Oréal",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "Accenture",
+        "sector": "Business Services",
+        "colors": [
+            "#000000"
+        ]
+    },
+    {
+        "name": "Audi",
+        "sector": "Automotive",
         "colors": [
             "#ffffff",
             "#000000",
@@ -71,8 +275,54 @@
         ]
     },
     {
-        "name": "axa",
-        "sector": "financial services",
+        "name": "Hermès",
+        "sector": "Luxury",
+        "colors": []
+    },
+    {
+        "name": "Goldman Sachs",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Citi",
+        "sector": "Financial Services",
+        "colors": [
+            "#fd2500",
+            "#002c70"
+        ]
+    },
+    {
+        "name": "Siemens",
+        "sector": "Diversified",
+        "colors": []
+    },
+    {
+        "name": "Colgate",
+        "sector": "FMCG",
+        "colors": [
+            "#ec2324",
+            "#ffffff"
+        ]
+    },
+    {
+        "name": "Danone",
+        "sector": "FMCG",
+        "colors": [
+            "#ffffff",
+            "#17459a",
+            "#0062ae",
+            "#ee2e25"
+        ]
+    },
+    {
+        "name": "Sony",
+        "sector": "Electronics",
+        "colors": []
+    },
+    {
+        "name": "AXA",
+        "sector": "Financial Services",
         "colors": [
             "#014b94",
             "#ff273b",
@@ -80,42 +330,281 @@
         ]
     },
     {
-        "name": "bmw",
-        "sector": "automotive",
+        "name": "Nestlé",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "Allianz",
+        "sector": "Financial Services",
         "colors": [
-            "#ffffff",
-            "#000000",
-            "#dddfe1"
+            "#123387"
         ]
     },
     {
-        "name": "budweiser",
-        "sector": "alcohol",
+        "name": "Nissan",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "Thomson Reuters",
+        "sector": "Media",
+        "colors": []
+    },
+    {
+        "name": "Cartier",
+        "sector": "Luxury",
         "colors": [
-            "#ee2e25",
-            "#b2231c",
+            "#000000"
+        ]
+    },
+    {
+        "name": "adidas",
+        "sector": "Sporting Goods",
+        "colors": [
+            "#000000"
+        ]
+    },
+    {
+        "name": "Porsche",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "Caterpillar",
+        "sector": "Diversified",
+        "colors": [
+            "#000000",
+            "#fdce12"
+        ]
+    },
+    {
+        "name": "Xerox",
+        "sector": "Business Services",
+        "colors": []
+    },
+    {
+        "name": "Morgan Stanley",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Panasonic",
+        "sector": "Electronics",
+        "colors": []
+    },
+    {
+        "name": "Shell",
+        "sector": "Energy",
+        "colors": []
+    },
+    {
+        "name": "3M",
+        "sector": "Diversified",
+        "colors": [
+            "#ed2324"
+        ]
+    },
+    {
+        "name": "Discovery",
+        "sector": "Media",
+        "colors": [
+            "#acb8bf",
+            "#969ea5",
             "#ffffff"
         ]
     },
     {
-        "name": "burbery",
-        "sector": "luxury",
+        "name": "KFC",
+        "sector": "Restaurants",
+        "colors": []
+    },
+    {
+        "name": "Visa",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Prada",
+        "sector": "Luxury",
+        "colors": []
+    },
+    {
+        "name": "Tiffany & Co.",
+        "sector": "Luxury",
+        "colors": []
+    },
+    {
+        "name": "Sprite",
+        "sector": "Beverages",
+        "colors": []
+    },
+    {
+        "name": "Burberry",
+        "sector": "Luxury",
         "colors": [
             "#000000"
         ]
     },
     {
-        "name": "canon",
-        "sector": "electronics",
+        "name": "Kia",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "Santander",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Starbucks",
+        "sector": "Restaurants",
+        "colors": []
+    },
+    {
+        "name": "Adobe",
+        "sector": "Technology",
         "colors": [
-            "#fa251f"
+            "#ff2500",
+            "#000000"
         ]
     },
     {
-        "name": "cartier",
-        "sector": "luxury",
+        "name": "Johnson & Johnson",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "John Deere",
+        "sector": "Diversified",
+        "colors": []
+    },
+    {
+        "name": "MTV",
+        "sector": "Media",
+        "colors": []
+    },
+    {
+        "name": "DHL",
+        "sector": "Transportation",
+        "colors": [
+            "#ffcc01",
+            "#d01d11",
+            "#e16011",
+            "#ed9409"
+        ]
+    },
+    {
+        "name": "Chevrolet",
+        "sector": "Automotive",
+        "colors": [
+            "#636565",
+            "#cfac58",
+            "#bac0c2",
+            "#dfc380",
+            "#ffffff",
+            "#4d4d4f"
+        ]
+    },
+    {
+        "name": "Ralph Lauren",
+        "sector": "Apparel",
+        "colors": []
+    },
+    {
+        "name": "Duracell",
+        "sector": "FMCG",
         "colors": [
             "#000000"
         ]
+    },
+    {
+        "name": "Jack Daniel's",
+        "sector": "Alcohol",
+        "colors": []
+    },
+    {
+        "name": "Johnnie Walker",
+        "sector": "Alcohol",
+        "colors": []
+    },
+    {
+        "name": "Harley-Davidson",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "MasterCard",
+        "sector": "Financial Services",
+        "colors": []
+    },
+    {
+        "name": "Kleenex",
+        "sector": "FMCG",
+        "colors": []
+    },
+    {
+        "name": "Smirnoff",
+        "sector": "Alcohol",
+        "colors": []
+    },
+    {
+        "name": "Land Rover",
+        "sector": "Automotive",
+        "colors": []
+    },
+    {
+        "name": "FedEx",
+        "sector": "Transportation",
+        "colors": [
+            "#483092",
+            "#adaeb3"
+        ]
+    },
+    {
+        "name": "Corona",
+        "sector": "Alcohol",
+        "colors": [
+            "#ffc324",
+            "#025596"
+        ]
+    },
+    {
+        "name": "Huawei",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Heineken",
+        "sector": "Alcohol",
+        "colors": []
+    },
+    {
+        "name": "Pizza Hut",
+        "sector": "Restaurants",
+        "colors": []
+    },
+    {
+        "name": "Hugo Boss",
+        "sector": "Apparel",
+        "colors": []
+    },
+    {
+        "name": "Nokia",
+        "sector": "Technology",
+        "colors": []
+    },
+    {
+        "name": "Gap",
+        "sector": "Apparel",
+        "colors": [
+            "#010841",
+            "#ffffff"
+        ]
+    },
+    {
+        "name": "Nintendo",
+        "sector": "Electronics",
+        "colors": []
     }
 ]

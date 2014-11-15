@@ -7,7 +7,8 @@
         $brandList = $("#brand-list"),
         $result = $(".result"),
         $settings = $(".settings"),
-        countDown = seconds(4),
+        imageCanvas = $("#image").get(0),
+        countDown = seconds(2),
         waitTime = seconds(2),
         diffLimit = 64,
         step = 20,
@@ -178,11 +179,14 @@
 
         // Run colorify with params and options.
         colorify({
+            canvas: imageCanvas,
             list: brandList,
             current: currentNumber,
             step: step,
             diffLimit: diffLimit,
             callback: function (rgbaList) {
+                $(imageCanvas).filter(":hidden").show()
+
                 // Feedback.
                 info("ongoing")
 
