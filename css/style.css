@@ -219,17 +219,11 @@ header h1 {
   height: 12px;
   border-radius: 12px;
 }
-.tag-list {
+.sector {
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   text-align: center;
-}
-.tag-list li {
-  display: inline-block;
-  font-size: .8em;
-}
-.tag-list li:not(:last-child):after {
-  content: ",";
+  font-size: 0.8em;
 }
