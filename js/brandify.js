@@ -168,8 +168,9 @@
 
     function sortBrands (brandsList) {
         return brandsList.sort(function (a, e) {
-                // Sort brands by diff value being minimum.
-                return e.diff < a.diff
+                // Sort brands by whose diff value being minimum.
+                return e.diff < a.diff ? 1 :
+                    (a.diff < e.diff ? -1 : 0)
             }).map(function(e) {
                 // Reduce object to brand-level for rendering.
                 return e.brand
