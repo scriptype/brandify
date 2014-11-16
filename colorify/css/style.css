@@ -250,8 +250,8 @@ h1:hover .tooltip {
   margin-top: 2em;
 }
 .json {
-  text-overflow: ellipsis;
-  -webkit-appearance: none;
+  white-space: pre;
+  overflow-wrap: normal;
   background: none;
   resize: none;
   border: none;
@@ -260,6 +260,9 @@ h1:hover .tooltip {
   line-height: inherit;
   font-family: inherit;
   color: inherit;
+}
+.json:not(:empty) {
+  cursor: text;
 }
 .json:focus,
 .json:hover {
