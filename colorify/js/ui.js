@@ -198,7 +198,6 @@
                 }
 
                 brands[currentNumber].colors = rgbaList
-                delete brands[currentNumber]["logoDataURL"]
 
                 result()
             }
