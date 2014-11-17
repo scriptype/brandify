@@ -22,6 +22,10 @@
 .information h3:not( :nth-of-type(1)) {
   margin-top: 2em;
 }
+.information td:nth-child(2n) {
+  padding-left: 10px;
+  font-weight: 500;
+}
 .json {
   white-space: pre;
   overflow-wrap: normal;

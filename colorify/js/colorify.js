@@ -8,7 +8,7 @@ function colorify (options) {
     var img = new Image()
 
     // Get data url.
-    var dataURL = options.list[options.current]["logoDataURL"]
+    var dataURL = options.data[options.index]["logoDataURL"]
 
     if (!dataURL) {
         options.callback([])
@@ -16,7 +16,7 @@ function colorify (options) {
     }
 
     // Set new data url as source of image.
-    img.src = options.list[options.current]["logoDataURL"]
+    img.src = options.data[options.index]["logoDataURL"]
 
     // Draw image to canvas.
     drawImage(img)
@@ -72,16 +72,21 @@ function colorify (options) {
             }
         }
 
+        console.log(opaquePixels.length)
+
         // Common opaque pixels.
         var commonPixels = [], px
 
         var j = 0
         for (j; j < opaquePixels.length; j++) {
             px = opaquePixels[j]
-            // Color exists in multiple places in image.
-            if (isCommon(px, opaquePixels))
+            // Keep each common color for once.
+            if (isUnique(px, commonPixels) &&
+                isCommon(px, opaquePixels))
                 commonPixels.push(px)
         }
+
+        console.log(commonPixels.length)
 
         // Common, opaque and distinctive pixels holder.
         var differentPixels = []
@@ -95,12 +100,16 @@ function colorify (options) {
             }
         }
 
-        // Map pixels to HEX strings.
-        var hexStrings = differentPixels.map(function (rgb) {
-            return toHex(rgb)
-        })
+        console.log(differentPixels.length, differentPixels)
 
-        options.callback(hexStrings)
+        // If output is HEX, return colors in HEX format.
+        if (options.output == "hex")
+            // Map pixels to HEX strings.
+            differentPixels = differentPixels.map(function (rgb) {
+                return toHex(rgb)
+            })
+
+        options.callback(differentPixels)
     }
 
     // Detect if a color have been seen in multiple places in image.
@@ -112,6 +121,14 @@ function colorify (options) {
         })
 
         return samePixels.length > minCommonLimit
+    }
+
+    // Detect if RGBA array is a member of another big array of arrays.
+    // Nifty stringify trick.
+    function isUnique (rgb, pool) {
+        return pool.map(function(e) {
+            return JSON.stringify(e)
+        }).indexOf(JSON.stringify(rgb)) === -1
     }
 
     // Eliminate similar tones of a color.

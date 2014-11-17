@@ -34,11 +34,7 @@
     <aside class="result">
         <div class="information">
             <h3>Settings</h3>
-            <ul class="settings">
-                <li id="diff-limit">Min Color Difference: <span></span></li>
-                <li id="step">Grid Step: <span></span></li>
-                <li>Data: Brand List</li>
-            </ul>
+            <div class="settings"></div>
             <h3>Results</h3>
         </div>
         <textarea class="json" readonly></textarea>
@@ -46,13 +42,25 @@
 
 </div>
 
-<!-- Templates -->
+<!-- TEMPLATES -->
+<!-- Brand list -->
 <script id="brands-template" type="text/x-handlebars-template">
     <ul class="brand-list">
         {{#each this}}
             <li class="{{status}}" data-name="{{name}}">{{name}}</li>
         {{/each}}
     </ul>
+</script>
+<!-- Settings template -->
+<script id="settings-template" type="text/x-handlebars-template">
+    <table class="settings-list">
+        {{#each this}}
+            <tr>
+                <td>{{description}}:</td>
+                <td>{{value}}</td>
+            </tr>
+        {{/each}}
+    </table>
 </script>
 
 <!-- Library -->

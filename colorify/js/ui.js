@@ -1,35 +1,59 @@
 (function() {
     "use strict"
 
-    // Set globals.
+    // SET GLOBALS.
+    // UI variables.
     var brandsTemplate = Handlebars.compile($("#brands-template").html()),
-        brandList, currentBrandNumber = 0,
+        settingsTemplate = Handlebars.compile($("#settings-template").html()),
+        currentBrandNumber = 0,
+        brandList, data, UxVerb
+
+    // Get elements.
+    var imageCanvas = $("#image").get(0),
         $brandList = $("#brand-list"),
         $result = $(".result"),
         $settings = $(".settings"),
-        imageCanvas = $("#image").get(0),
-        countDown = seconds(2),
-        waitTime = seconds(2),
-        diffLimit = 64,
-        step = 20,
-        brands, timer, _timer, UxVerb
+        $startInfo   = $("#start-info"),
+        $startButton = $("#start")
 
-    // Get brands.
+    // Timers.
+    var countDown = seconds(2),
+        waitTime = seconds(2),
+        timer, _timer
+
+    // Settings.
+    var settings = {
+        file: {
+            description: "Data source",
+            value: "test.json"
+        },
+        diffLimit: {
+            description: "Minimum difference",
+            value: 64
+        },
+        step: {
+            description: "Read per (pixels)",
+            value: 20
+        },
+        output: {
+            description: "Output format",
+            value: "hex"
+        }
+    }
+
+    // GET DATA.
     var req = new XMLHttpRequest()
-    req.open("GET", "brands.json", true)
+    req.open("GET", settings.file.value, true)
     req.onload = init
     req.send()
 
-    // Get elements.
-    var $startInfo   = $("#start-info"),
-        $startButton = $("#start")
-
+    // Data is ready.
     function init () {
         // Save brands.
-        brands = JSON.parse(req.responseText)
+        data = JSON.parse(req.responseText)
 
         // Save brand list without dataURLs for template.
-        brandList = brands.map(function (b) {
+        brandList = data.map(function (b) {
             return {
                 name: b.name,
                 status: "normal"
@@ -37,7 +61,10 @@
         })
 
         // Initialize brand list.
-        renderBrandList(brandList)
+        renderBrandList()
+
+        // Show settings.
+        renderSettings()
 
         // "start" or "continue" depending on situation.
         UxVerb = "start"
@@ -48,14 +75,14 @@
         // Show starter button.
         $startButton.show()
             .on("click", start)
-
-        // Show settings.
-        $settings.find("#diff-limit span").text(diffLimit)
-        $settings.find("#step span").text(step)
     }
 
     function renderBrandList () {
         $brandList.html(brandsTemplate(brandList))
+    }
+
+    function renderSettings () {
+        $settings.html(settingsTemplate(settings))
     }
 
     function start (event) {
@@ -86,9 +113,50 @@
             // Start cancellable countdown.
             timer = setTimeout(function() {
                 // Final function.
-                callback(brands, currentBrandNumber++)
+                callback(currentBrandNumber++)
             }, ms)
         }
+    }
+
+    // Colorify high-order.
+    function processBrand (currentNumber) {
+
+        // Run colorify with params and options.
+        colorify({
+            data: data,
+            index: currentNumber,
+            step: settings.step.value,
+            diffLimit: settings.diffLimit.value,
+            output: settings.output.value,
+            canvas: imageCanvas,
+            callback: function (colors) {
+                $(imageCanvas).filter(":hidden").show()
+
+                // Feedback.
+                info("ongoing")
+
+                // Continue until finish.
+                if (currentNumber + 1 < data.length) {
+                    setTimeout(start, waitTime)
+                } else {
+                    info("finish")
+                }
+
+                // Set colors of current brand.
+                data[currentNumber].colors = colors
+
+                // Show result data.
+                result()
+            }
+        })
+    }
+
+    function result () {
+        // Get processed brands.
+        var completedBrands = data.slice(0, currentBrandNumber)
+        // Stringify and show data.
+        $result.find(".json")
+            .text(JSON.stringify(completedBrands, null, "  "))
     }
 
     // Feedback for user.
@@ -104,16 +172,17 @@
                     .prop("disabled", false)
 
                 // Return info-text back to initial state.
-                $startInfo.text(currentBrandNumber + " / " + brands.length + " brands completed.")
+                $startInfo.text(currentBrandNumber + " / " + data.length + " brands completed.")
                     .addClass("success")
                     .removeClass("warning")
+
                 break
 
             case "cancellable":
                 // Switch info text style.
                 $startInfo.toggleClass("warning", "success")
                     .text("Processing will " + UxVerb +
-                    " in " + (param / 1000) + " seconds.")
+                        " in " + (param / 1000) + " seconds.")
 
                 // Button text.
                 $startButton.text("Cancel")
@@ -123,11 +192,11 @@
                 _timer = setInterval(function () {
                     param -= 1000
                     if (param - 1000)
-                        // Processing will start.
+                    // Processing will start.
                         $startInfo.text("Processing will " + UxVerb +
                             " in " + (param / 1000) + " seconds.")
                     else
-                        // Processing started feedback.
+                    // Processing started feedback.
                         info("processing")
 
                 }, seconds(1))
@@ -138,30 +207,34 @@
                 // Switch info text style.
                 $startInfo.toggleClass("warning", "success")
                     // Remaining brand info.
-                    .text(currentBrandNumber + " / " + brands.length)
+                    .text(currentBrandNumber + " / " + data.length)
 
+                // Set all previous brands as completed.
                 var i = 0
-
                 for (i; i < currentBrandNumber; i++) {
                     brandList[i].status = "completed"
                 }
 
+                // Re-render brand list.
                 renderBrandList()
 
                 break
 
             case "processing":
                 // Current brand info.
-                $startInfo.text(brands[currentBrandNumber].name)
+                $startInfo.text(data[currentBrandNumber].name)
 
+                // Find current brands.
                 var j = 0
-
                 for (j; j < brandList.length; j++) {
-                    if (brandList[j].name === brands[currentBrandNumber].name)
+                    // Set current brand as ongoing.
+                    if (brandList[j].name === data[currentBrandNumber].name)
                         brandList[j].status = "ongoing"
                 }
 
+                // Re-render brand list.
                 renderBrandList()
+
                 break
 
             case "finish":
@@ -169,48 +242,14 @@
                 $startButton.text("finished processing")
                     .removeClass("cancel")
                     .prop("disabled", true)
+
                 break
 
         }
     }
 
-    // Colorify high-order.
-    function processBrand (brandList, currentNumber) {
-
-        // Run colorify with params and options.
-        colorify({
-            canvas: imageCanvas,
-            list: brandList,
-            current: currentNumber,
-            step: step,
-            diffLimit: diffLimit,
-            callback: function (rgbaList) {
-                $(imageCanvas).filter(":hidden").show()
-
-                // Feedback.
-                info("ongoing")
-
-                // Continue until finish.
-                if (currentNumber + 1 < brands.length) {
-                    setTimeout(start, waitTime)
-                } else {
-                    info("finish")
-                }
-
-                brands[currentNumber].colors = rgbaList
-
-                result()
-            }
-        })
-    }
-
-    function result () {
-        var completedBrands = brands.slice(0, currentBrandNumber)
-        $result.find(".json")
-            .text(JSON.stringify(completedBrands, null, "  "))
-    }
-
     function seconds (sec) {
         return sec * 1000
     }
+
 })()
