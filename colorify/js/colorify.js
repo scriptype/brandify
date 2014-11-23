@@ -123,7 +123,7 @@ function colorify (options) {
         return samePixels.length > minCommonLimit
     }
 
-    // Detect if RGBA array is a member of another big array of arrays.
+    // Detect if RGB array is a member of another big array of arrays.
     // Nifty stringify trick.
     function isUnique (rgb, pool) {
         return pool.map(function(e) {

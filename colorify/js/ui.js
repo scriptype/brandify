@@ -25,7 +25,7 @@
     var settings = {
         file: {
             description: "Data source",
-            value: "test.json"
+            value: "brands.json"
         },
         diffLimit: {
             description: "Minimum difference",
@@ -38,12 +38,15 @@
         output: {
             description: "Output format",
             value: "hex"
+        },
+        get: function (prop) {
+            return this[prop].value
         }
     }
 
     // GET DATA.
     var req = new XMLHttpRequest()
-    req.open("GET", settings.file.value, true)
+    req.open("GET", settings.get("file"), true)
     req.onload = init
     req.send()
 
@@ -82,7 +85,10 @@
     }
 
     function renderSettings () {
-        $settings.html(settingsTemplate(settings))
+        // Exclude getter function with a cheap trick.
+        var UiSettings = JSON.parse(JSON.stringify(settings))
+        // Render.
+        $settings.html(settingsTemplate(UiSettings))
     }
 
     function start (event) {
@@ -125,9 +131,9 @@
         colorify({
             data: data,
             index: currentNumber,
-            step: settings.step.value,
-            diffLimit: settings.diffLimit.value,
-            output: settings.output.value,
+            step: settings.get("step"),
+            diffLimit: settings.get("diffLimit"),
+            output: settings.get("output"),
             canvas: imageCanvas,
             callback: function (colors) {
                 $(imageCanvas).filter(":hidden").show()
@@ -136,11 +142,10 @@
                 info("ongoing")
 
                 // Continue until finish.
-                if (currentNumber + 1 < data.length) {
+                if (currentNumber + 1 < data.length)
                     setTimeout(start, waitTime)
-                } else {
+                else
                     info("finish")
-                }
 
                 // Set colors of current brand.
                 data[currentNumber].colors = colors
