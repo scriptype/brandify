@@ -57,6 +57,9 @@
         // Render brands.
         $target.html(HTML)
 
+        // Reset viewport.
+        $("html, body").scrollTop(0)
+
         // Re-attach events as DOM is reset.
         propagateEvents()
 
