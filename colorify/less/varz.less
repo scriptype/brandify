@@ -1,0 +1,35 @@
+@white: #f8f8f8;
+@black: #333;
+@success: #5c8;
+@fail: #c44;
+@warning: #fa4;
+@disabled: #ccc;
+
+@slightBlue: #e3e4ea;
+@slightBlueHover: saturate(darken(@slightBlue, 5%), 5%);
+@slightBlueBorder: 1px solid darken(@slightBlue, 5%);
+@slightBlueBorderHover: 1px solid saturate(darken(@slightBlue, 10%), 25%);
+
+@slightRed: #eae4e3;
+@slightRedHover: saturate(darken(@slightRed, 5%), 5%);
+@slightRedBorder: 1px solid darken(@slightRed, 5%);
+@slightRedBorderHover: 1px solid saturate(darken(@slightRed, 10%), 25%);
+
+@ratioSmall: 38.2%;
+@ratioBig: 61.8%;
+
+.success {
+  color: @success
+}
+
+.warning {
+  color: @warning
+}
+
+.fail {
+  color: @fail
+}
+
+.monospace {
+  font-family: "input mono", menlo, monaco, monospace
+}

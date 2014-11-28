@@ -1,0 +1,135 @@
+@import "reset";
+@import "varz";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: normal 16px/24px helvetica, arial, sans-serif;
+  background: @white;
+  color: @black;
+}
+
+header {
+  text-align: center;
+  margin: 0 auto 2em;
+  padding-top: 1em
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+  font-family: "Gotham Rounded", helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 2em;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: @black;
+  transition: color .5s;
+  .tooltip {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: .5em;
+    opacity: 0;
+    color: @black;
+    transition: opacity .5s
+  }
+  &:hover {
+    color: @white;
+    .tooltip {
+      opacity: 10
+    }
+  }
+}
+
+.info {
+  color: @info;
+  font-size: .8em;
+  margin: -.5em auto 1em;
+  &.error {
+    color: @red
+  }
+}
+
+.loading {
+  display: none;
+  margin: 1em;
+  text-transform: capitalize;
+  font-size: 1em;
+  line-height: 1;
+  color: @red
+}
+
+.file-label {
+  .button {
+    display: inline-block;
+    margin: 0 1em;
+    padding: .6em 6em;
+    background: @buttonBG;
+    color: @white;
+    font-size: .8em;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all .3s;
+    box-shadow: inset 0 -1em 2em -1em rgba(0, 0, 0, .2),
+                      0 2em 1em -1em rgba(0, 0, 0, .2);
+
+    &:hover {
+      background: lighten(@buttonBG, 8%);
+    }
+
+    &:active {
+      box-shadow: inset 0 -1em 4em -1em rgba(0, 0, 0, .4),
+                        0 1em 1em -1em rgba(0, 0, 0, .3);
+    }
+  }
+
+  input {
+    display: none
+  }
+}
+
+.result-container {
+  width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: none;
+
+  .title {
+    margin-bottom: .5em;
+    font-size: .8em;
+    text-transform: uppercase;
+    text-align: center;
+    span {
+      padding: .2em 1em;
+      background: rgba(130, 140, 210, .4);
+      color: lighten(@black, 20%);
+      border-radius: 3px;
+      border: 1px solid rgba(0, 0, 0, .2);
+      box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .3),
+                  inset -1px -1px 1px rgba(255, 255, 255, .3),
+                  inset 0 3px 10px -3px rgba(0, 0, 0, .5);
+      cursor: default
+    }
+  }
+
+  div {
+    float: left;
+
+    &:first-child {
+      margin-right: 10px
+    }
+  }
+
+  #result {
+    background: #000
+  }
+}

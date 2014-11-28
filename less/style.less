@@ -1,0 +1,132 @@
+@import "reset.less";
+@import "varz.less";
+
+html, body {
+  height: 100%
+}
+
+body {
+  font: normal 16px/24px helvetica, arial, sans-serif;
+  background: @white;
+  color: @black
+}
+
+.main-grid {
+  width: 960px;
+  margin: 0 auto
+}
+
+header {
+  background: @black;
+  color: @white;
+  border-bottom: @border-light;
+  text-align: center;
+  box-shadow: 0 20px 20px -20px @half-black;
+  transition: all .5s;
+
+  &.light {
+    color: @black
+  }
+
+  h1 {
+    font-family: "Gotham Rounded", helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 2em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+  }
+}
+
+.filter-panel {
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+
+  .filter {
+    font-family: "courier new", menlo, monospace;
+
+    &.slider input {
+      width: 100px
+    }
+
+    &.hex-color input {
+      width: 50px;
+      border: none;
+      padding: 2px 5px;
+      box-shadow: inset 0 5px 10px -2px @half-black;
+      .border-radius()
+    }
+  }
+}
+
+.brands-container {
+  overflow: hidden;
+  padding-bottom: 30px;
+
+  .brand {
+    width: 300px;
+    height: 150px;
+    margin: 30px 30px 0 0;
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: @border-light;
+    text-align: center;
+    box-shadow: inset 0 -20px 80px -40px @half-black;
+    transition: all .3s;
+    .border-radius();
+
+    .brand-logo {
+      width: 125%;
+      position: absolute;
+      left: -5%;
+      top: -10%;
+      opacity: .1;
+      z-index: -10;
+      .logo-transform-default();
+      transition: opacity .3s, -webkit-transform 1s
+    }
+
+    &:hover {
+      box-shadow: inset 0 -35px 120px -50px @half-black;
+
+      .brand-logo {
+        opacity: .2;
+        .logo-transform-hover();
+      }
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0
+    }
+
+    h2 {
+      font-size: 1.5em;
+      padding: 1em;
+    }
+  }
+}
+
+.color-list {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, .1);
+  border-radius: 6px;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+    .rounded(12px);
+  }
+}
+
+.sector {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-size: .8em
+}

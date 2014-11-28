@@ -1,0 +1,60 @@
+@import "reset";
+@import "varz";
+@import "main_section";
+@import "result_section";
+
+html, body {
+  height: 100%;
+  overflow: hidden
+}
+
+body {
+  font: normal .9em/1.618 helvetica, arial, sans-serif;
+  background: @white;
+  color: @black;
+}
+
+button {
+  &:hover, &:focus {
+    outline: none
+  }
+}
+
+.container {
+  overflow: hidden;
+  height: 100%;
+
+  .main, .result {
+    float: left;
+    height: 100%;
+    box-sizing: border-box
+  }
+
+  .main .content, .result .json {
+    overflow-y: auto;
+    overflow-x: hidden
+  }
+
+  .main {
+    width: @ratioBig;
+    padding: 1.618em 2em;
+
+    .content {
+      height: 100%
+    }
+  }
+
+  .result {
+    width: @ratioSmall;
+
+    .information {
+      height: 25%;
+      padding: 1.618em 2em;
+    }
+
+    .json {
+      height: 75%;
+      padding: 0 2em;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@import "varz";
+
+header {
+  text-align: center;
+  margin: 0 auto
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+  font-family: "Gotham Rounded", helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 2em;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: @black;
+  transition: color .5s;
+  .tooltip {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: .5em;
+    opacity: 0;
+    color: @black;
+    transition: opacity .5s
+  }
+  &:hover {
+    color: @white;
+    .tooltip {
+      opacity: 10
+    }
+  }
+}
+
+.content {
+  .monospace();
+
+  .content-box {
+      margin: 3em
+  }
+}
+
+.starting {
+  text-align: center;
+
+  p {
+    margin: 1em 0
+  }
+}
+
+.brand-list {
+  overflow: hidden;
+  text-align: left;
+
+  li {
+    float: left;
+    width: 33%;
+    margin-bottom: .5em;
+
+    &.completed {
+      color: @success
+    }
+
+    &.ongoing {
+      color: @warning
+    }
+  }
+}
+
+.start-button {
+  display: none;
+  padding: 1em 3em;
+  font-size: 1em;
+  text-transform: capitalize;
+  background: @slightBlue;
+  border: none;
+  border-radius: 3px;
+  border: @slightBlueBorder;
+  box-shadow: inset 1px 1px 0 #eee,
+    inset -1px -1px 0 #eee,
+  inset 0 -5px 40px -20px rgba(0, 0, 0, .5);
+  cursor: pointer;
+  transition: all .2s;
+
+  &.cancel {
+    background: @slightRed;
+    color: @fail;
+
+    &:hover {
+      border: @slightRedBorderHover;
+      background: @slightRedHover
+    }
+  }
+
+  &:hover {
+    border: @slightBlueBorderHover;
+    background: @slightBlueHover
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px 1px #eee,
+      inset -1px -1px 1px #eee,
+    inset 0 5px 40px -15px rgba(0, 0, 0, .5);
+  }
+
+  &:disabled {
+    background: @disabled;
+    color: @white;
+    cursor: default
+  }
+}
+
+.image {
+  text-align: center;
+
+  #image {
+    display: none
+  }
+}

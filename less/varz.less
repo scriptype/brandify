@@ -1,0 +1,43 @@
+@white: #f8f8f8;
+@black: #111;
+@half-black: rgba(0, 0, 0, .5);
+
+@border-lighter: 1px solid #eee;
+@border-light: 1px solid #ccc;
+@border-dark: 1px solid #aaa;
+@border-darker: 1px solid #222;
+
+.border-radius () {
+  border-radius: 3px
+}
+
+.rounded (@radius) {
+  width: @radius;
+  height: @radius;
+  border-radius: @radius;
+}
+
+.logo-transform-default () {
+  -webkit-transform: perspective(500)
+                     rotate3d(27.5, 40, -27.5, 45deg);
+  -webkit-transform-origin: 60% 90% 90%;
+}
+
+.logo-transform-hover () {
+  -webkit-transform: perspective(500)
+                     rotate3d(0, 0, 0, 45deg);
+  -webkit-transform-origin: 60% 90% 90%;
+}
+
+
+// interesting effect.
+//                inset 120px 0 0 -40px transparent,
+//                inset 240px 0 0 -40px transparent,
+//                inset 340px 0 0 -40px transparent;
+//    transition: all .3s;
+//    &:hover {
+//      box-shadow: inset 0 -20px 80px -40px rgba(0, 0, 0, .4),
+//                  inset 43px 0 0 -40px cadetblue,
+//                  inset 46px 0 0 -40px khaki,
+//                  inset 49px 0 0 -40px red
+//    }

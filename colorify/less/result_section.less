@@ -1,0 +1,50 @@
+@import "varz";
+
+.result {
+  background: @slightBlue;
+  border-left: @slightBlueBorder;
+  .monospace()
+}
+
+.information {
+  h3 {
+    font-size: 1.38em;
+    margin-bottom: 1em;
+    &:not(:nth-of-type(1)) {
+      margin-top: 2em
+    }
+  }
+
+  td:nth-child(2n) {
+    padding-left: 10px;
+    font-weight: 500
+  }
+}
+
+.json {
+  white-space: pre;
+  overflow-wrap: normal;
+
+  // Textarea reset.
+  background: none;
+  resize: none;
+  border: none;
+  width: 100%;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  color: inherit;
+
+  &:not(:empty) {
+    cursor: text
+  }
+
+  &:focus, &:hover {
+    background: darken(@slightBlue, 3%)
+  }
+
+  &:focus {
+    outline: none;
+    background: darken(@slightBlue, 6%)
+  }
+}
