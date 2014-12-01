@@ -16,7 +16,7 @@ function colorify (options) {
     }
 
     // Set new data url as source of image.
-    img.src = options.data[options.index]["logoDataURL"]
+    img.src = dataURL
 
     // Draw image to canvas.
     drawImage(img)
