@@ -46,7 +46,7 @@ function colorify (options) {
         var imageData = context.getImageData(0, 0, width, height).data
 
         // Process image data by steps.
-        // As a single pixel consists of 4 values (rgb), multiply step by 4.
+        // As a single pixel consists of 4 values (rgba), multiply step by 4.
         // So {n * 4} means {n} pixels.
         var step = options.step * 4
 
@@ -62,7 +62,7 @@ function colorify (options) {
             var rgb = [
                 imageData[i],     // R
                 imageData[i + 1], // G
-                imageData[i + 2] // B
+                imageData[i + 2]  // B
             ]
 
             // If color is full opaque,
