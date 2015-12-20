@@ -179,6 +179,10 @@ header h1 {
   overflow: hidden;
   padding-bottom: 30px;
 }
+.brands-container .loading-text {
+  text-align: center;
+  padding: 20px;
+}
 .brands-container .brand {
   width: 300px;
   height: 150px;
