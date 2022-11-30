@@ -19,7 +19,7 @@ function colorify (options) {
     img.src = dataURL
 
     // Draw image to canvas.
-    drawImage(img)
+    img.onload = drawImage.bind(null, img)
 
     function drawImage (image) {
         // Get image dimensions.

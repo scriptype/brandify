@@ -49,7 +49,7 @@
             img.src = reader.result
 
             // Draw image to canvas.
-            drawImage(img)
+            img.onload = drawImage.bind(null, img)
 
             // Set file title.
             $fileTitle.text(file.name)
